@@ -3,7 +3,7 @@
 var _ = require('lodash');
 var merge = require('lodash/merge');
 var Twit = require('twit');
-var credentials = require('./../../credentials');
+var credentials = require('./credentials');
 
 /**
  * EatShitBot constructor description
