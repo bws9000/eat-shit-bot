@@ -5,7 +5,7 @@ var eatShitBot = require('./src/eat-shit-bot/eat-shit-bot');
 var App = (function() {
 
 	var Bot;
-	var phrase = 'Musee Pompidou';
+	var phrase = 'Satan';
 
 	var initialize = function() {
 		Bot = new eatShitBot();
