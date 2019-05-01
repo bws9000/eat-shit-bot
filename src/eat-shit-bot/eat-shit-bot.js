@@ -1,7 +1,5 @@
 'use strict';
 
-var port = process.env.PORT || 5000;
-
 var _ = require('lodash');
 var merge = require('lodash/merge');
 var Twit = require('twit');
