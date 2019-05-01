@@ -1,1 +1,1 @@
-web: pm2-runtime start ecosystem.config.js --port $PORT --env production
+web: pm2-runtime start ecosystem.config.js  -p $PORT --env production
