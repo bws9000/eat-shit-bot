@@ -1,5 +1,7 @@
 'use strict';
 
+require('custom-env').env('staging');
+
 var eatShitBot = require('./src/eat-shit-bot/eat-shit-bot');
 
 var App = (function() {
@@ -42,4 +44,4 @@ var App = (function() {
 
 App.init();
 App.streamAndRetweet();
-//App.get();
+App.get();

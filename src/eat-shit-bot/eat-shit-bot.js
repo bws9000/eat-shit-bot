@@ -46,7 +46,8 @@ EatShitBot.prototype.getStream = function (string) {
         track: string
     });
     this.stream.on('tweet', function (tweet) {
-        this.logTweet(tweet["text"], tweet["user"]["screen_name"]);
+        //this.logTweet(tweet["text"], tweet["user"]["screen_name"]);
+        console.log('stream');
     }.bind(this));
 };
 
@@ -60,11 +61,7 @@ EatShitBot.prototype.getTweets = function (string, count) {
             statuses = data.statuses;
             i = statuses.length;
             while (i--) {
-                var phrase2 = 'not today satan';
-                this.checkForAnotherPhrase(statuses[i]["text"], 
-                                           statuses[i]["user"]["screen_name"],
-                                           phrase2);
-                //this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
+                this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
             }
         } else {
             console.log(error);
@@ -78,7 +75,13 @@ EatShitBot.prototype.streamAndRetweet = function (string) {
     });
     this.stream.on('tweet', function (tweet) {
         if (tweet["text"].toLowerCase().indexOf(string.toLowerCase()) !== -1) {
-            this.retweet(tweet.id_str);
+            var new_string = 'not today satan';
+            //console.log(tweet["text"]);
+            if (tweet["text"].toLowerCase().indexOf(new_string.toLowerCase()) !== -1) {
+                this.reply(tweet["user"]["screen_name"], tweet.id_str)
+            }else{
+                this.retweet(tweet.id_str);
+            }
         }
     }.bind(this));
     this.stream.on('disconnect', function (disconnectMessage) {
@@ -104,12 +107,17 @@ EatShitBot.prototype.retweet = function (tweetId) {
     }.bind(this));
 };
 
-EatShitBot.prototype.checkForAnotherPhrase = function(tweet, screenName, phrase2) {
-    if (tweet.toLowerCase().indexOf(phrase2)){
-        this.twitBotT.post('statuses/update', { status: tweet }, function (err, data, response) {
-            console.log(data)
-        });
-    }
+EatShitBot.prototype.reply = function(tweet_user, status_id){
+    this.twitBot.post('statuses/update', {
+        status: tweet_user + ' Today is a great day!',
+        in_reply_to_status_id: status_id
+    }, function (err, data, response) {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(data.text + ' tweeted!')
+        }
+    })
 }
 
 EatShitBot.prototype.logTweet = function (tweet, screenName) {
