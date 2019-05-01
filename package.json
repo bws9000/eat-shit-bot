@@ -8,6 +8,7 @@
     "eat-shit-bot": "bin/eat-shit-bot.js"
   },
   "scripts": {
+    "preinstall": "npm install pm2 -g",
     "docs": "jsdoc src/eat-shit-bot/eat-shit-bot.js -p -d dist/docs/",
     "setup": "mkdir -p dist/",
     "build": "npm run setup && npm run js",
