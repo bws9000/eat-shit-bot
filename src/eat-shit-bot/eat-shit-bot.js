@@ -60,7 +60,11 @@ EatShitBot.prototype.getTweets = function (string, count) {
             statuses = data.statuses;
             i = statuses.length;
             while (i--) {
-                this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
+                var phrase2 = 'not today satan';
+                this.checkForAnotherPhrase(statuses[i]["text"], 
+                                           statuses[i]["user"]["screen_name"],
+                                           phrase2);
+                //this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
             }
         } else {
             console.log(error);
@@ -99,6 +103,12 @@ EatShitBot.prototype.retweet = function (tweetId) {
         };
     }.bind(this));
 };
+
+EatShitBot.prototype.checkForAnotherPhrase = function(tweet, screenName, phrase2) {
+    if (tweet.toLowerCase().indexOf(phrase2)){
+        console.log(`${tweet}\n${screenName}\n\n`)
+    }
+}
 
 EatShitBot.prototype.logTweet = function (tweet, screenName) {
     //console.log(`${tweet}\n${screenName}\n\n`)
