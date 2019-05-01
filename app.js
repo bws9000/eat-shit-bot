@@ -16,7 +16,7 @@ var App = (function() {
 	};
 
 	var get = function() {
-		Bot.getTweets(phrase, 5);
+		Bot.getTweets(phrase, 100);
 	};
 
 	var streamAndRetweet = function() {
