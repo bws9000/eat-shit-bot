@@ -101,5 +101,5 @@ EatShitBot.prototype.retweet = function (tweetId) {
 };
 
 EatShitBot.prototype.logTweet = function (tweet, screenName) {
-    console.log(`${tweet}\n${screenName}\n\n`)
+    //console.log(`${tweet}\n${screenName}\n\n`)
 };
