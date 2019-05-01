@@ -16,7 +16,8 @@
     "watch:js": "onchange 'src/**/*.js' -- npm run js",
     "test": "mocha-phantomjs -R dot test/spec/index.html",
     "test:browser": "open test/spec/index.html",
-    "example": "open test/examples/index.html"
+    "example": "open test/examples/index.html",
+    "start": "pm2-runtime start ecosystem.config.js --env production"
   },
   "dependencies": {
     "lodash": "latest",
