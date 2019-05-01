@@ -109,7 +109,7 @@ EatShitBot.prototype.retweet = function (tweetId) {
 
 EatShitBot.prototype.reply = function(tweet_user, status_id){
     this.twitBot.post('statuses/update', {
-        status: tweet_user + ' Today is a great day!',
+        status: '@'+tweet_user + ' How about tomorrow?',
         in_reply_to_status_id: status_id
     }, function (err, data, response) {
         if (err) {
