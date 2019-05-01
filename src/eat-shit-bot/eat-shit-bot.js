@@ -106,7 +106,9 @@ EatShitBot.prototype.retweet = function (tweetId) {
 
 EatShitBot.prototype.checkForAnotherPhrase = function(tweet, screenName, phrase2) {
     if (tweet.toLowerCase().indexOf(phrase2)){
-        console.log(`${tweet}\n${screenName}\n\n`)
+        this.twitBotT.post('statuses/update', { status: tweet }, function (err, data, response) {
+            console.log(data)
+        });
     }
 }
 

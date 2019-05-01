@@ -1,1 +1,1 @@
-worker: pm2-runtime start ecosystem.config.js logs [--raw] --env production
+worker: pm2-runtime start ecosystem.config.js --env production
