@@ -71,13 +71,13 @@ EatShitBot.prototype.getTweets = function (string, count) {
     }.bind(this));
 };
 
-EatShitBot.prototype.streamAndRetweet = function (string, retort_phrase, enable_retort) {
+EatShitBot.prototype.streamAndRetweet = function (string, retort_phrase_v1, retort_phrase_v2, enable_retort) {
     this.stream = this.twitBot.stream('statuses/filter', {
         track: string
     });
     this.stream.on('tweet', function (tweet) {
         if (tweet["text"].toLowerCase().indexOf(string.toLowerCase()) !== -1) {
-            if (tweet["text"].toLowerCase().indexOf(retort_phrase.toLowerCase()) !== -1) {
+            if (this.checkRetort(retort_phrase_v1,retort_phrase_v2)) {
                 if (enable_retort) {
                     this.reply(tweet["user"]["screen_name"], tweet.id_str)
                 }
@@ -105,8 +105,8 @@ EatShitBot.prototype.retweet = function (tweetId) {
     this.twitBot.post('statuses/retweet/' + tweetId, function (error, tweet, response) {
         if (!error) {
             this.logTweet(tweet["text"], tweet["user"]["screen_name"]);
-        }else{
-            
+        } else {
+            console.log(error);
             if (error === error_over_limit) {
                 console.log("Over daily limit: going to sleep for 24 hours");
                 setTimeout(function () {
@@ -124,13 +124,21 @@ EatShitBot.prototype.reply = function (tweet_user, status_id) {
         status: '@' + tweet_user + ' ' + retort,
         in_reply_to_status_id: status_id
     }, function (error) {
-            if (error === error_over_limit) {
-                console.log("Over daily limit: going to sleep for 24 hours");
-                setTimeout(function () {
-                    console.log("...time to wake up");
-                }, 86400000);
-            }
+        console.log(error);
+        if (error === error_over_limit) {
+            console.log("Over daily limit: going to sleep for 24 hours");
+            setTimeout(function () {
+                console.log("...time to wake up");
+            }, 86400000);
+        }
     })
+}
+
+EatShitBot.prototype.checkRetort = function (tweet_text, retort_phrase_v1, retort_phrase_v2) {
+    if (tweet_text.toLowerCase().indexOf(retort_phrase_v1.toLowerCase()) !== -1 ||
+        tweet_text.toLowerCase().indexOf(retort_phrase_v2.toLowerCase()) !== -1) {
+        return true;
+    }
 }
 
 EatShitBot.prototype.getRetort = function () {

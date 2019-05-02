@@ -8,7 +8,8 @@ var App = (function() {
 
 	var Bot;
 	var phrase = 'Satan';
-	var retort_phrase = 'not today satan';
+	var retort_phrase_v1 = 'not today satan';
+	var retort_phrase_v2 = 'not today, satan';
 	var enable_retort = true;
 
 	var initialize = function() {
@@ -24,7 +25,7 @@ var App = (function() {
 	};
 
 	var streamAndRetweet = function() {
-		Bot.streamAndRetweet(phrase, retort_phrase, enable_retort);
+		Bot.streamAndRetweet(phrase, retort_phrase_v1, retort_phrase_v2, enable_retort);
 	};
 
 	return {
