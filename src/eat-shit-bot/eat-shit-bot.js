@@ -96,8 +96,7 @@ EatShitBot.prototype.streamAndRetweet = function (string, retort_phrase, enable_
     this.stream.on('reconnect', function (request, response, connectInterval) {
         console.log('attemping to reconnect, status message:', response.statusMessage);
         request.on('error', function (error) {
-            console.log('...');
-            console.log('error:', error);
+            console.log('error streamAndRetweet(): ', error);
         });
     }.bind(this));
 };
@@ -108,7 +107,7 @@ EatShitBot.prototype.retweet = function (tweetId) {
             this.logTweet(tweet["text"], tweet["user"]["screen_name"]);
         }else{
             
-            if (error.equals(error_over_limit)) {
+            if (error === error_over_limit) {
                 //puase for 24 hours
                 setTimeout(function () {
                     console.log("Over daily limit: going to sleep for 24 hours");
@@ -126,7 +125,7 @@ EatShitBot.prototype.reply = function (tweet_user, status_id) {
         status: '@' + tweet_user + ' ' + retort,
         in_reply_to_status_id: status_id
     }, function (error) {
-            if (error.equals(error_over_limit)) {
+            if (error === error_over_limit) {
                 //puase for 24 hours
                 setTimeout(function () {
                     console.log("Over daily limit: going to sleep for 24 hours");
