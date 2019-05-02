@@ -108,9 +108,9 @@ EatShitBot.prototype.retweet = function (tweetId) {
         }else{
             
             if (error === error_over_limit) {
-                //puase for 24 hours
+                console.log("Over daily limit: going to sleep for 24 hours");
                 setTimeout(function () {
-                    console.log("Over daily limit: going to sleep for 24 hours");
+                    console.log("...time to wake up");
                 }, 86400000);
             }
 
@@ -125,9 +125,9 @@ EatShitBot.prototype.reply = function (tweet_user, status_id) {
         in_reply_to_status_id: status_id
     }, function (error) {
             if (error === error_over_limit) {
-                //puase for 24 hours
+                console.log("Over daily limit: going to sleep for 24 hours");
                 setTimeout(function () {
-                    console.log("Over daily limit: going to sleep for 24 hours");
+                    console.log("...time to wake up");
                 }, 86400000);
             }
     })
