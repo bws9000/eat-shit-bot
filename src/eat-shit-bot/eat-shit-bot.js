@@ -118,7 +118,6 @@ EatShitBot.prototype.retweet = function (tweetId) {
     }.bind(this));
 };
 
-
 EatShitBot.prototype.reply = function (tweet_user, status_id) {
     var retort = this.getRetort();
     this.twitBot.post('statuses/update', {

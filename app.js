@@ -1,6 +1,6 @@
 'use strict';
 
-require('custom-env').env('staging');
+//require('custom-env').env('staging');
 
 var eatShitBot = require('./src/eat-shit-bot/eat-shit-bot');
 
