@@ -64,7 +64,7 @@ EatShitBot.prototype.getTweets = function (string, count) {
                 //this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
             }
         } else {
-            console.log(error);
+            console.log('Error: ' + error);
         }
     }.bind(this));
 };
@@ -94,6 +94,7 @@ EatShitBot.prototype.streamAndRetweet = function (string, retort_phrase, enable_
     this.stream.on('reconnect', function (request, response, connectInterval) {
         console.log('attemping to reconnect, status message:', response.statusMessage);
         request.on('error', function (error) {
+            console.log('...');
             console.log('error:', error);
         });
     }.bind(this));
@@ -103,6 +104,8 @@ EatShitBot.prototype.retweet = function (tweetId) {
     this.twitBot.post('statuses/retweet/' + tweetId, function (error, tweet, response) {
         if (!error) {
             this.logTweet(tweet["text"], tweet["user"]["screen_name"]);
+        }else{
+            console.log('Error: ' + error);
         };
     }.bind(this));
 };
