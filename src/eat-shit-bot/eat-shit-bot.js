@@ -11,6 +11,8 @@ var credentials = {
     access_token_secret: process.env.ACCESS_TOKEN_SECRET
 }
 
+var error_over_limit = 'Error: User is over daily status update limit.';
+
 /**
  * EatShitBot constructor description
  *
@@ -64,12 +66,7 @@ EatShitBot.prototype.getTweets = function (string, count) {
                 //this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
             }
         } else {
-            if (error.equals("Error: User is over daily status update limit.")){
-                //puase for 24 hours
-                setTimeout(function () {
-                    console.log("Over daily limit: going to sleep for 24 hours");
-                }, 86400000);
-            }
+            console.log('error getTweets(): ' + error);
         }
     }.bind(this));
 };
@@ -110,7 +107,14 @@ EatShitBot.prototype.retweet = function (tweetId) {
         if (!error) {
             this.logTweet(tweet["text"], tweet["user"]["screen_name"]);
         }else{
-            console.log('Error: ' + error);
+            
+            if (error.equals(error_over_limit)) {
+                //puase for 24 hours
+                setTimeout(function () {
+                    console.log("Over daily limit: going to sleep for 24 hours");
+                }, 86400000);
+            }
+
         };
     }.bind(this));
 };
@@ -121,8 +125,13 @@ EatShitBot.prototype.reply = function (tweet_user, status_id) {
     this.twitBot.post('statuses/update', {
         status: '@' + tweet_user + ' ' + retort,
         in_reply_to_status_id: status_id
-    }, function (err) {
-        if (err) { console.log(err);}
+    }, function (error) {
+            if (error.equals(error_over_limit)) {
+                //puase for 24 hours
+                setTimeout(function () {
+                    console.log("Over daily limit: going to sleep for 24 hours");
+                }, 86400000);
+            }
     })
 }
 
