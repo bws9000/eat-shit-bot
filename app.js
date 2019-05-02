@@ -12,6 +12,8 @@ var App = (function() {
 	var retort_phrase_v2 = 'not today, satan';
 	var enable_retort = true;
 
+	//var tweet_limits = [];
+
 	var initialize = function() {
 		Bot = new eatShitBot();
 	};
