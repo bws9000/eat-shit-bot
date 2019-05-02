@@ -77,7 +77,7 @@ EatShitBot.prototype.streamAndRetweet = function (string, retort_phrase_v1, reto
     });
     this.stream.on('tweet', function (tweet) {
         if (tweet["text"].toLowerCase().indexOf(string.toLowerCase()) !== -1) {
-            if (this.checkRetort(retort_phrase_v1,retort_phrase_v2)) {
+            if (this.checkRetort(tweet["text"],retort_phrase_v1,retort_phrase_v2)) {
                 if (enable_retort) {
                     this.reply(tweet["user"]["screen_name"], tweet.id_str)
                 }
