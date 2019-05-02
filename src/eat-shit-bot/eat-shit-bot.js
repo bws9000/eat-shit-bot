@@ -110,7 +110,7 @@ EatShitBot.prototype.retweet = function (tweetId) {
 EatShitBot.prototype.reply = function(tweet_user, status_id){
     var retort = this.getRetort();
     this.twitBot.post('statuses/update', {
-        status: '@'+tweet_user + retort,
+        status: '@'+tweet_user + ' ' + retort,
         in_reply_to_status_id: status_id
     }, function (err, data, response) {
         if (err) {
