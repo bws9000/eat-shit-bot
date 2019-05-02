@@ -61,7 +61,7 @@ EatShitBot.prototype.getTweets = function (string, count) {
             statuses = data.statuses;
             i = statuses.length;
             while (i--) {
-                this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
+                //this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
             }
         } else {
             console.log(error);
@@ -69,17 +69,17 @@ EatShitBot.prototype.getTweets = function (string, count) {
     }.bind(this));
 };
 
-EatShitBot.prototype.streamAndRetweet = function (string) {
+EatShitBot.prototype.streamAndRetweet = function (string, retort_phrase, enable_retort) {
     this.stream = this.twitBot.stream('statuses/filter', {
         track: string
     });
     this.stream.on('tweet', function (tweet) {
         if (tweet["text"].toLowerCase().indexOf(string.toLowerCase()) !== -1) {
-            var new_string = 'not today satan';
-            //console.log(tweet["text"]);
-            if (tweet["text"].toLowerCase().indexOf(new_string.toLowerCase()) !== -1) {
-                this.reply(tweet["user"]["screen_name"], tweet.id_str)
-            }else{
+            if (tweet["text"].toLowerCase().indexOf(retort_phrase.toLowerCase()) !== -1) {
+                if (enable_retort) {
+                    this.reply(tweet["user"]["screen_name"], tweet.id_str)
+                }
+            } else {
                 this.retweet(tweet.id_str);
             }
         }
@@ -107,30 +107,31 @@ EatShitBot.prototype.retweet = function (tweetId) {
     }.bind(this));
 };
 
-EatShitBot.prototype.reply = function(tweet_user, status_id){
+
+EatShitBot.prototype.reply = function (tweet_user, status_id) {
     var retort = this.getRetort();
     this.twitBot.post('statuses/update', {
-        status: '@'+tweet_user + ' ' + retort,
+        status: '@' + tweet_user + ' ' + retort,
         in_reply_to_status_id: status_id
-    }, function (err, data, response) {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log(data.text + ' tweeted!')
-        }
+    }, function (err) {
+        if (err) { console.log(err);}
     })
 }
 
-EatShitBot.prototype.getRetort = function(){
+EatShitBot.prototype.getRetort = function () {
     var retort = [];
     retort.push("Today is as good any other day!");
     retort.push("Why wait, tomorrow is so far away.");
-    retort.push("Lucky for you Satan is booked up today.");
+    retort.push("Lucky for you I'm booked up today.");
     retort.push("How about your Birthday?");
     retort.push("When is a good day for you?");
     retort.push("That's fine I'm getting stoned right now.");
-    retort.push("Today doesn't work for Satan either.");
-    retort.push("Satan is having a salad right now, maybe tomorrow");
+    retort.push("Today doesn't work for me either.");
+    retort.push("I'm having a salad right now, maybe tomorrow.");
+    retort.push("I'm torturing sinners right now be back later.");
+    retort.push("Thanks for the mention, I'll get back with you later.")
+    retort.push("That's ok I'll be here all day.");
+    retort.push("I'm eating ice cream so hot down here.");
     var result = retort[Math.floor(Math.random() * retort.length)];
     return result;
 }

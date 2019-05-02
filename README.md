@@ -1,3 +1,10 @@
+# Change log
+
+## v1.0
+
+- Added reply function based on a phrase.
+
+
 # eat-shit-bot
 > Lmao
 

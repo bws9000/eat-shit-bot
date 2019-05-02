@@ -8,6 +8,8 @@ var App = (function() {
 
 	var Bot;
 	var phrase = 'Satan';
+	var retort_phrase = 'not today satan';
+	var enable_retort = true;
 
 	var initialize = function() {
 		Bot = new eatShitBot();
@@ -22,7 +24,7 @@ var App = (function() {
 	};
 
 	var streamAndRetweet = function() {
-		Bot.streamAndRetweet(phrase);
+		Bot.streamAndRetweet(phrase, retort_phrase, enable_retort);
 	};
 
 	return {
@@ -44,4 +46,4 @@ var App = (function() {
 
 App.init();
 App.streamAndRetweet();
-App.get();
+//App.get();
