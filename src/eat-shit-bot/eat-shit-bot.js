@@ -64,7 +64,12 @@ EatShitBot.prototype.getTweets = function (string, count) {
                 //this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
             }
         } else {
-            console.log('Error: ' + error);
+            if (error.equals("Error: User is over daily status update limit.")){
+                //puase for 24 hours
+                setTimeout(function () {
+                    console.log("Over daily limit: going to sleep for 24 hours");
+                }, 86400000);
+            }
         }
     }.bind(this));
 };
