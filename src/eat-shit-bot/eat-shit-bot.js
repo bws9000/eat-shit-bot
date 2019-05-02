@@ -64,7 +64,7 @@ EatShitBot.prototype.getTweets = function (string, count) {
                 this.logTweet(statuses[i]["text"], statuses[i]["user"]["screen_name"]);
             }
         } else {
-            console.log(error.Error);
+            console.log(error);
         }
     }.bind(this));
 };
