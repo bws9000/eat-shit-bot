@@ -5,7 +5,7 @@
 
 ## what isn't here yet
 - retweet throttle because twitter has a limit
-- permission to reply redicoulus retorts
+- permission to reply ridiculous retorts
 - read all the goodies https://help.twitter.com/en/rules-and-policies/twitter-automation
 
 # eat-shit-bot
