@@ -3,10 +3,9 @@
 ## v1.0
 
 - Added reply function based on a phrase.
-- Now just add a retweet throttle so you don't go over the limit
-- Also if you reply they turn your app off and tell you they "muzzled" you
-- happy twitter development! I'm outta here :)
-
+> Now just add a retweet throttle so you don't go over the tweet limit.
+> Also if you reply they turn your app off and tell you they "muzzled" you.
+> Happy Twitter Development! Eat Shit! :)
 
 # eat-shit-bot
 > Lmao
