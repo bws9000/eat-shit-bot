@@ -1,19 +1,13 @@
 # Change log
 
 ## v1.0
-
 - Added reply function based on a phrase.
 
-- Now just add a retweet throttle so you don't go over the tweet limit.
-- Also if you reply twitter "muzzles" you.
-- Happy Twitter Development! Eat Shit! :)
-> ---
-- Before you spend too much time developing anything other than a "share a tweet" app... read this
->
-- V. Termination
-> Twitter may immediately terminate or suspend this Agreement, any rights granted herein, and/or your
-> license to the Licensed Materials, at its sole discretion at any time, for any reason by providing 
-> notice to you.
+## what isn't here yet
+- retweet throttle because twitter has a limit
+- permission to reply redicoulus retorts
+https://help.twitter.com/en/rules-and-policies/twitter-automation
+
 
 # eat-shit-bot
 > Lmao
