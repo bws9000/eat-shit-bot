@@ -6,6 +6,13 @@
 > Now just add a retweet throttle so you don't go over the tweet limit.
 > Also if you reply they turn your app off and tell you they "muzzled" you.
 > Happy Twitter Development! Eat Shit! :)
+> ---
+> Before you spend too much time developing anything other than a "share a tweet" app... read this
+>
+> V. Termination
+> Twitter may immediately terminate or suspend this Agreement, any rights granted herein, and/or your
+> license to the Licensed Materials, at its sole discretion at any time, for any reason by providing 
+> notice to you.
 
 # eat-shit-bot
 > Lmao
