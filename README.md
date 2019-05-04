@@ -7,6 +7,7 @@
 - retweet throttle because twitter has a limit
 - permission to reply ridiculous retorts
 - read all the goodies https://help.twitter.com/en/rules-and-policies/twitter-automation
+- @satanbot9000
 
 # eat-shit-bot
 > Lmao
